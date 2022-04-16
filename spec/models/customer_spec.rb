@@ -21,4 +21,8 @@ RSpec.describe Customer, type: :model do
     customer.valid?
     expect(customer.errors[:phone]).to include("can't be blank")
   end
+
+  it"should have_many :orders" do
+    expect(Customer.reflect_on_association(:orders).macro).to eq :has_many
+  end
 end

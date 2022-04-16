@@ -29,4 +29,12 @@ RSpec.describe ItemCategory, type: :model do
     expect(item_category2.errors[:item_id]).to include("has already been taken")
     expect(item_category2.errors[:category_id]).to include("has already been taken")
   end
+
+  it 'should belong_to menu_item' do
+      expect(ItemCategory.reflect_on_association(:menu_item).macro).to eq :belongs_to
+  end
+
+  it "should belong_to category" do
+      expect(ItemCategory.reflect_on_association(:category).macro).to eq :belongs_to
+  end
 end

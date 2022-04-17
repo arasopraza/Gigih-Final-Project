@@ -100,7 +100,7 @@ RSpec.describe OrdersController do
       it 'changes @orders attributes' do
         patch :update, params: { id: @order, order: attributes_for(:order, status: 'PAID') }
         @order.reload
-        expect(@order.name).to eq('PAID')
+        expect(@order.status).to eq('PAID')
       end
 
       it 'redirects to the order' do

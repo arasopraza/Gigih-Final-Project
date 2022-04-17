@@ -35,7 +35,7 @@ RSpec.describe OrdersController do
   describe 'GET new' do
     it 'assigns a new order to @order' do
       get :new
-      expect(assigns(:order)).to be_a_new(order)
+      expect(assigns(:order)).to be_a_new(Order)
     end
 
     it 'renders the :new template' do

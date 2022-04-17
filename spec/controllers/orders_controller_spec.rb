@@ -63,7 +63,7 @@ RSpec.describe OrdersController do
       it 'saves the new order in the database' do
         expect{
           post :create, params: { order: attributes_for(:order) }
-        }.to change(order, :count).by(1)
+        }.to change(Order, :count).by(1)
       end
 
       it 'redirects to order show' do
@@ -76,7 +76,7 @@ RSpec.describe OrdersController do
       it 'does not save the new order in the database' do
         expect{
           post :create, params: { order: attributes_for(:invalid_order) }
-        }.not_to change(order, :count)
+        }.not_to change(Order, :count)
       end
 
       it 're-renders the :new template' do

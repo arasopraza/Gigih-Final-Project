@@ -120,7 +120,7 @@ RSpec.describe MenuItemsController do
     end
   end
 
-  describe 'DELETE #destroy' do
+  describe 'DELETE destroy' do
     before :each do
       @menu_item = create(:menu_item)
     end
@@ -132,7 +132,7 @@ RSpec.describe MenuItemsController do
     end
 
     it 'redirects to menu_items index' do
-      elete :destroy, params: { id: @menu_item }
+      delete :destroy, params: { id: @menu_item }
       expect(response).to redirect_to menu_items_url
     end
   end

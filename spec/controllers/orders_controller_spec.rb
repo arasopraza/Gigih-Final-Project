@@ -111,8 +111,8 @@ RSpec.describe OrdersController do
   
     context "with invalid attributes" do
       it 'does not update the order in the database' do
-        patch :update, params: { id: @order, order: attributes_for(:invalid_order, status: "NEW") }
-        expect(@order.status).not_to eq('NEW')
+        patch :update, params: { id: @order, order: attributes_for(:invalid_order, customer_id: nil, status: 'PAID') }
+        expect(@order.status).not_to eq('PAID')
       end
 
       it 're-renders the :edit template' do

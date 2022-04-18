@@ -5,7 +5,7 @@ FactoryBot.define do
   end
 
   factory :invalid_item_category, parent: :item_category do 
-    item_id { 1 }
-    category_id { 1 }
+    item_id { nil }
+    category_id { nil }
   end
 end

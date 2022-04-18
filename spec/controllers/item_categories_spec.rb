@@ -79,9 +79,9 @@ RSpec.describe ItemCategoriesController do
       end
 
       it 'changes @item_categoriess attributes' do
-        patch :update, params: { id: @item_category, item_category: attributes_for(:item_category, name: 'Nasi Uduk') }
+        patch :update, params: { id: @item_category, item_category: attributes_for(:item_category, category_id: 17) }
         @item_category.reload
-        expect(@item_category.name).to eq('Nasi Uduk')
+        expect(@item_category.category_id).to eq(17)
       end
 
       it 'return a 200 OK status' do
@@ -91,8 +91,8 @@ RSpec.describe ItemCategoriesController do
   
     context "with invalid attributes" do
       it 'does not update the item_category in the database' do
-        patch :update, params: { id: @item_category, item_category: attributes_for(:invalid_item_category, name: 'Nasi Uduk', price: "Test") }
-        expect(@item_category.name).not_to eq('Nasi Uduk')
+        patch :update, params: { id: @item_category, item_category: attributes_for(:invalid_item_category, category_id: "test", customer_id: "TEST") }
+        expect(@item_category.category_id).not_to eq(17)
       end
 
       it 'return a 200 status' do

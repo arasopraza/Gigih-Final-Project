@@ -1,6 +1,7 @@
 <br>
 <h2>Menu Makanan</h2>
 <br>
+<%= link_to "New ", new_menu_path %>
 <table class="table">
   <thead>
     <tr>
@@ -10,10 +11,11 @@
     </tr>
   </thead>
   <tbody>
+  <% no = 0 %>
   <% @menus.each do |menu| %>
     <tr>
-      <th scope="row">1</th>
-      <td><%= menu.name %></td>
+      <th scope="row"><%= no += 1 %></th>
+      <td><%= link_to menu.name, menu%></td>
     </tr>
     <% end %>
   </tbody>

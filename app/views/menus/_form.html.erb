@@ -1,0 +1,35 @@
+<%= form_with(model: menu) do |form| %>
+    <div class="card">
+    <div class="card-body">
+
+    <% if menu.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(menu.errors.count, "error") %> prohibited this menu from being saved:</h2>
+  
+        <ul>
+          <% menu.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="mb-3">
+      <%= form.label :name, { class: "form-label"} %>
+      <%= form.text_field :name, { class: "form-control", placeholder: "Masukkan nama menu" } %>
+    </div>
+  
+    <div class="mb-3">
+      <%= form.label :description, { class: "form-label"} %>
+      <%= form.text_field :description, { class: "form-control", placeholder: "Masukkan description menu" } %>
+    </div>
+  
+    <div class="mb-3">
+      <%= form.label :price, { class: "form-label"} %>
+      <%= form.text_field :price, { class: "form-control", placeholder: "Masukkan price menu" } %>
+    </div>
+  
+    <%= form.submit "Submit", class: "btn btn-primary" %>
+    </div>
+    </div>
+  <% end %>

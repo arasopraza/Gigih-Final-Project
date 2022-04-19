@@ -5,4 +5,11 @@ FactoryBot.define do
     address { "Bandung" }
     email { "aras.opraza@gmail.com" }
   end
+
+  factory :invalid_customer, parent: :customer do
+    name { nil }
+    phone { nil}
+    address { nil }
+    email { "aras.opraza@gmail.com" }
+  end
 end

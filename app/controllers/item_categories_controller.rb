@@ -7,6 +7,8 @@ class ItemCategoriesController < ApplicationController
 
   def new
     @item_category = ItemCategory.new
+    @menus = Menu.all
+    @categories = Category.all
   end
 
   def edit

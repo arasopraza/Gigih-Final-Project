@@ -9,9 +9,9 @@ RSpec.describe ItemCategoriesController do
       expect(assigns(:item_categories)).to match_array([item1, item2])
     end
     
-    it 'return a 200 OK status' do
+    it 'renders the :index template' do
       get :index
-      expect(response).to have_http_status(:ok)
+      expect(response).to render_template :index
     end
   end
 
@@ -21,9 +21,9 @@ RSpec.describe ItemCategoriesController do
       expect(assigns(:item_category)).to be_a_new(ItemCategory)
     end
 
-    it 'return a 200 OK status' do
+    it 'renders the :new template' do
       get :new
-      expect(response).to have_http_status(:ok)
+      expect(:response).to render_template :new
     end
   end
   
@@ -49,8 +49,9 @@ RSpec.describe ItemCategoriesController do
         }.to change(ItemCategory, :count).by(1)
       end
 
-      it 'return a 201 OK status' do
-        expect(response).to have_http_status(:ok)
+      it 'redirects to item_category show' do
+        post :create, params: { item_category: attributes_for(:item_category) }
+        expect(response).to redirect_to(item_category_path(assigns[:item_category]))
       end
     end
   
@@ -61,8 +62,9 @@ RSpec.describe ItemCategoriesController do
         }.not_to change(ItemCategory, :count)
       end
 
-      it 'return a 200 status' do
-        expect(response).to have_http_status(:ok)
+      it 're-renders the :new template' do
+        post :create, params: { item_category: attributes_for(:invalid_item_category) }
+        expect(response).to render_template :new
       end
     end
   end
@@ -84,8 +86,9 @@ RSpec.describe ItemCategoriesController do
         expect(@item_category.category_id).to eq(17)
       end
 
-      it 'return a 200 OK status' do
-        expect(response).to have_http_status(:ok)
+      it 'redirects to the item_category' do
+        patch :update, params: { id: @item_category, item_category: attributes_for(:item_category) }
+        expect(response).to redirect_to @item_category
       end
     end
   
@@ -95,8 +98,10 @@ RSpec.describe ItemCategoriesController do
         expect(@item_category.category_id).not_to eq(17)
       end
 
-      it 'return a 200 status' do
-        expect(response).to have_http_status(:ok)
+      it 're-renders the :edit template' do
+        patch :update, params: { id: @item_category, item_category: attributes_for(:invalid_item_category) }
+        expect(assigns(:item_category)).to eq @item_category
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end
@@ -112,8 +117,9 @@ RSpec.describe ItemCategoriesController do
       }.to change(ItemCategory, :count).by(-1)
     end
 
-    it 'return a 200 status' do
-      expect(response).to have_http_status(:ok)
+    it 'redirects to item_categories index' do
+      delete :destroy, params: { id: @item_category }
+      expect(response).to redirect_to item_categories_url
     end
   end
 end

@@ -1,0 +1,23 @@
+<br>
+<h2>Customer</h2>
+<br>
+<%= link_to "New ", new_customer_path %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Nama</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% no = 0 %>
+  <% @customers.each do |customer| %>
+    <tr>
+      <th scope="row"><%= no += 1 %></th>
+      <td><%= link_to customer.name, customer%></td>
+      <td><%= customer.email %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

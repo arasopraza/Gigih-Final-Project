@@ -1,0 +1,40 @@
+<%= form_with(model: customer) do |form| %>
+    <div class="card">
+    <div class="card-body">
+
+    <% if customer.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+  
+        <ul>
+          <% customer.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="mb-3">
+      <%= form.label :name, { class: "form-label"} %>
+      <%= form.text_field :name, { class: "form-control", placeholder: "Masukkan nama customer" } %>
+    </div>
+  
+    <div class="mb-3">
+      <%= form.label :email, { class: "form-label"} %>
+      <%= form.text_field :email, { class: "form-control", placeholder: "Masukkan email customer" } %>
+    </div>
+  
+    <div class="mb-3">
+      <%= form.label :phone, { class: "form-label"} %>
+      <%= form.text_field :phone, { class: "form-control", placeholder: "Masukkan phone customer" } %>
+    </div>
+
+    <div class="mb-3">
+    <%= form.label :address, { class: "form-label"} %>
+    <%= form.text_area :adress, { class: "form-control", placeholder: "Masukkan alamat customer" } %>
+  </div>
+  
+    <%= form.submit "Submit", class: "btn btn-primary" %>
+    </div>
+    </div>
+  <% end %>

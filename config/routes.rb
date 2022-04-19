@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :orders
   resources :categories
   resources :item_categories
+  resources :customers
 end

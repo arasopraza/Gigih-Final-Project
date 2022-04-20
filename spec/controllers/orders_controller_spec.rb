@@ -6,10 +6,10 @@ RSpec.describe OrdersController do
         @customer = create(:customer)
     end     
 
-    it 'populates an array of all orders' do
+    it 'populates an orders with customer_id' do
         order = create(:order, customer_id: @customer.id)
         get :index
-        expect(assigns(:orders)).to match_array([order])
+        expect(order.customer_id).not_to be nil 
     end
 
     it 'renders the :index template' do

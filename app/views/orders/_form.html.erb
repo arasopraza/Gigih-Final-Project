@@ -1,0 +1,35 @@
+<%= form_with(model: order) do |form| %>
+    <div class="card">
+    <div class="card-body">
+
+    <% if order.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+  
+        <ul>
+          <% order.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <h4>Email</h4>
+    <%= form.collection_select :customer_id, Customer.order(:id), :id, :email %>
+    <br>
+    <br>
+    
+    <div class="mb-3">
+      <%= form.label :total, { class: "form-label"} %>
+      <%= form.text_field :total, { class: "form-control", placeholder: "Masukkan price menu" } %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :order_date, { class: "form-label"} %>
+      <%= form.date_field :order_date, { class: "form-control", placeholder: "Masukkan description menu" } %>
+    </div>
+  
+    <%= form.submit "Submit", class: "btn btn-primary" %>
+    </div>
+    </div>
+  <% end %>

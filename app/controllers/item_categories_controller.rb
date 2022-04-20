@@ -2,7 +2,7 @@ class ItemCategoriesController < ApplicationController
   skip_before_action :verify_authenticity_token
   
   def index
-    @item_categories = ItemCategory.all
+    @item_categories = ItemCategory.joins(:menu, :category).select('menus.name as menu_name, categories.name as category_name')
   end
 
   def new
@@ -20,8 +20,8 @@ class ItemCategoriesController < ApplicationController
 
     respond_to do |format|
       if @item_category.save
-        format.html { redirect_to item_category_url(@item_category), notice: "item_category was successfully created." }
-        format.json { render :show, status: :created, location: @item_category }
+        format.html { redirect_to action: "index", notice: "item_category was successfully created." }
+        format.json { render :index, status: :created, location: @item_category }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @item_category.errors, status: :unprocessable_entity }
@@ -50,6 +50,6 @@ class ItemCategoriesController < ApplicationController
   private
   # Only allow a list of trusted parameters through.
   def item_category_params
-    params.require(:item_category).permit(:category_id, :item_id)
+    params.require(:item_category).permit(:category_id, :menu_id)
   end
 end

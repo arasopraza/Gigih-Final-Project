@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def index
-    @orders = Order.joins(:customer).select('customers.name as name, orders.total, orders.order_date')
+    @orders = Order.joins(:customer).select('customers.name as name, orders.id, orders.total, orders.order_date, orders.status')
   end
 
   def show

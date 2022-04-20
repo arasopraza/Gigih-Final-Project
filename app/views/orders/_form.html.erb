@@ -28,6 +28,11 @@
       <%= form.label :order_date, { class: "form-label"} %>
       <%= form.date_field :order_date, { class: "form-control", placeholder: "Masukkan description menu" } %>
     </div>
+
+    <div class="mb-3">
+      <%= form.label :status, { class: "form-label"} %>
+      <%= form.text_field :status, { class: "form-control", placeholder: "Masukkan status menu" } %>
+    </div>
   
     <%= form.submit "Submit", class: "btn btn-primary" %>
     </div>

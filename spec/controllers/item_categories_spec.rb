@@ -2,11 +2,10 @@ require 'rails_helper'
 
 RSpec.describe ItemCategoriesController do
   describe 'GET index' do        
-    it 'populates an array of all item_categories' do
-      item1 = create(:item_category, category_id: 9, item_id: 9)
-      item2 = create(:item_category, category_id: 10, item_id: 10)
+    it 'populates an item_categories with category_id' do
+      item1 = create(:item_category, category_id: 9, menu_id: 9)
       get :index
-      expect(assigns(:item_categories)).to match_array([item1, item2])
+      expect(item1.category_id).not_to be nil
     end
     
     it 'renders the :index template' do
@@ -48,10 +47,10 @@ RSpec.describe ItemCategoriesController do
           post :create, params: { item_category: attributes_for(:item_category) }
         }.to change(ItemCategory, :count).by(1)
       end
-
-      it 'redirects to item_category show' do
-        post :create, params: { item_category: attributes_for(:item_category) }
-        expect(response).to redirect_to(item_category_path(assigns[:item_category]))
+       
+      it 'renders the :index template' do
+        get :index
+        expect(response).to render_template :index
       end
     end
   

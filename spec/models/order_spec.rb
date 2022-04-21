@@ -34,7 +34,11 @@ RSpec.describe Order, type: :model do
     expect(order.errors[:total]).to include("is not a number")
   end
 
-  it "should belong_to customer" do
+  it 'should belong_to customer' do
     expect(Order.reflect_on_association(:customer).macro).to eq :belongs_to
-end
+  end
+
+  it 'should have_many :order_detail' do
+    expect(Order.reflect_on_association(:order_detail).macro).to eq :has_many
+  end
 end

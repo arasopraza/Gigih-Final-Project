@@ -21,4 +21,8 @@ RSpec.describe OrderDetail, type: :model do
     order_detail.valid?
     expect(order_detail.errors[:menu_id]).to include("can't be blank")
   end
+
+  it 'should belong_to order' do
+    expect(OrderDetail.reflect_on_association(:order).macro).to eq :belongs_to
+  end
 end

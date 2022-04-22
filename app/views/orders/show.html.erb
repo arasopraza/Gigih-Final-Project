@@ -3,14 +3,14 @@
 <div class="container">
 <div class="card">
   <div class="card-body">
-    <h2><%= @order.status %></h2>
-    <p><%= @order.order_date %></p>
+    <p>Status : <%= @order.status %></p>
+    <p>Total : <%= @order.total %></p>
+    <p>Order Date : <%= @order.order_date %></p>
   </div>
 </div>
 <div>  
   <%= link_to "Edit this order", edit_order_path(@order) %> |
-  <%= link_to "Back to orders", orders_path %>
-
-  <%= button_to "Destroy this order", @order, method: :delete %>
+  <%= link_to "Back to orders", orders_path %> |
+  <%= link_to "New Order Detail", new_order_detail_path %>
 </div>
 <div>

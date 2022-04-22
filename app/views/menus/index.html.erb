@@ -9,6 +9,7 @@
       <th scope="col">No</th>
       <th scope="col">Nama</th>
       <th scope="col">Price</th>
+      <th scope="col">Category</th>
     </tr>
   </thead>
   <tbody>
@@ -18,6 +19,11 @@
       <th scope="row"><%= no += 1 %></th>
       <td><%= link_to menu.name, menu%></td>
       <td><%= menu.price %></td>
+      <td>
+        <% menu.categories.sort_by(&:name).each do |category| %>
+        <li><%= category.name %></li>
+        <% end %>
+      </td>
     </tr>
     <% end %>
   </tbody>

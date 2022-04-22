@@ -28,6 +28,11 @@
       <%= form.label :price, { class: "form-label"} %>
       <%= form.text_field :price, { class: "form-control", placeholder: "Masukkan price menu" } %>
     </div>
+
+    <%= form.collection_check_boxes :category_ids, Category.order(:name) || [], :id, :name do |c| %>
+      <%= c.check_box %>&#9;<%= c.label %>
+      <br>
+    <% end %>
   
     <%= form.submit "Submit", class: "btn btn-primary" %>
     </div>

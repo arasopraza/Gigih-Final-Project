@@ -6,6 +6,9 @@
     <h2><%= @menu.name %></h2>
     <p><%= @menu.description %></p>
     <p><%= @menu.price %></p>
+    <% @menu.categories.sort_by(&:name).each do |category| %>
+    <li><%= category.name %></li>
+    <% end %>
   </div>
 </div>
 <div>  

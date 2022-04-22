@@ -23,10 +23,10 @@ RSpec.describe Categorization, type: :model do
   end
 
   it 'should belong_to menu' do
-      expect(ItemCategory.reflect_on_association(:menu).macro).to eq :belongs_to
+      expect(Categorization.reflect_on_association(:menu).macro).to eq :belongs_to
   end
 
   it "should belong_to category" do
-      expect(ItemCategory.reflect_on_association(:category).macro).to eq :belongs_to
+      expect(Categorization.reflect_on_association(:category).macro).to eq :belongs_to
   end
 end

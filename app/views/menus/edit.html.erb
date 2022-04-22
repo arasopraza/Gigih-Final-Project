@@ -1,11 +1,3 @@
 <div class="container">
-    <div class="mb-3">
-        <label for="formGroupExampleInput" class="form-label">Nama</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="<%= @menu.name %>">
-    </div>
-
-    <div class="mb-3">
-        <label for="formGroupExampleInput2" class="form-label">Category</label>
-        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="<%= @menu.name %>">
-    </div>
+    <%= render "form", menu: @menu %>
 </div>

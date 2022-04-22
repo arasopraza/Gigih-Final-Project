@@ -8,6 +8,7 @@
     <tr>
       <th scope="col">No</th>
       <th scope="col">Nama</th>
+      <th scope="col">Price</th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +17,7 @@
     <tr>
       <th scope="row"><%= no += 1 %></th>
       <td><%= link_to menu.name, menu%></td>
+      <td><%= menu.price %></td>
     </tr>
     <% end %>
   </tbody>

@@ -22,6 +22,7 @@
       <td><%= order.order_date %></td>
       <td><%= order.status %></td>
       <td>Rp.<%= order.total %></td>
+      <td> <%= link_to "Show this order detail", order_detail_path(order.id)%></td>
     </tr>
     <% end %>
   </tbody>

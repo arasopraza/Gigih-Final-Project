@@ -47,7 +47,7 @@ RSpec.describe Menu, type: :model do
     expect(menu.errors[:description]).to include("is too long (maximum is 150 characters)")
   end
 
-  it"should have_many :item_categories" do
-      expect(Menu.reflect_on_association(:item_categories).macro).to eq :has_many
+  it"should have_many :categorizations" do
+      expect(Menu.reflect_on_association(:categorizations).macro).to eq :has_many
   end
 end

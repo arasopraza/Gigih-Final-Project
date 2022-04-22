@@ -11,6 +11,10 @@ class ItemCategoriesController < ApplicationController
     @categories = Category.all
   end
 
+  def show
+    @item_category = ItemCategory.find(params[:id])
+  end
+
   def edit
     @item_category = ItemCategory.find(params[:id])
   end

@@ -50,4 +50,8 @@ RSpec.describe Menu, type: :model do
   it"should have_many :categorizations" do
       expect(Menu.reflect_on_association(:categorizations).macro).to eq :has_many
   end
+
+  it"should have_many :order_details" do
+    expect(Menu.reflect_on_association(:order_details).macro).to eq :has_many
+end
 end

@@ -14,6 +14,20 @@ RSpec.describe ItemCategoriesController do
     end
   end
 
+  describe 'GET show' do
+    it 'assigns the requested item_category to @item_category' do
+      item_category = create(:item_category)
+      get :show, params: { id: item_category }
+      expect(assigns(:item_category)).to eq item_category
+    end
+
+    it 'renders the :show template' do
+      item_category = create(:item_category)
+      get :show, params: { id: item_category }
+      expect(response).to render_template :show
+    end
+  end
+
   describe 'GET new' do
     it 'assigns a new item_category to @item_category' do
       get :new

@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @order.errors, status: :unprocessable_entity }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -37,6 +37,10 @@ class OrdersController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def report_order
+    @orders = Order.joins(:customer).select('customers.name as name, customers.email as email, orders.total').where("order_date = ? OR email = ?", params[:order_date],params[:email])
   end
   
   private

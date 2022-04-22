@@ -10,15 +10,13 @@
       </ul>
     </div>
   <% end %>
-
+   
   <div>
-    <%= form.label :order_id, style: "display: block" %>
-    <%= form.number_field :order_id %>
+    <%= form.collection_select :order_id, Order.order(:id), :id, :customer_id %>
   </div>
 
   <div>
-    <%= form.label :menu_id, style: "display: block" %>
-    <%= form.number_field :menu_id %>
+    <%= form.collection_select :menu_id, Menu.order(:name), :id, :name %>
   </div>
 
   <div>

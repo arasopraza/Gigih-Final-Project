@@ -2,12 +2,13 @@
 <br>
 <h2>Menu Makanan</h2>
 <br>
-<%= link_to "New ", new_item_category_path %>
+<%= link_to "New", new_item_category_path %>
     <table class="table">
     <thead>
         <tr>
             <th scope="col">Nama</th>
             <th scope="col">Category</th>
+
         </tr>
     </thead>
     <tbody>
@@ -16,6 +17,7 @@
         <tr>
         <td><%= item.menu_name%></td>
         <td><%= item.category_name%></td>
+        <td><%= button_to "Delete", item_category_url(item.id), method: :delete %>
         </tr>
     <% end %>
     </tbody>

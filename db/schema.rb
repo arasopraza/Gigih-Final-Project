@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_21_072046) do
+ActiveRecord::Schema.define(version: 2022_04_22_154939) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "categorizations", force: :cascade do |t|
+    t.integer "menu_id", null: false
+    t.integer "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_categorizations_on_category_id"
+    t.index ["menu_id"], name: "index_categorizations_on_menu_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -60,4 +69,6 @@ ActiveRecord::Schema.define(version: 2022_04_21_072046) do
     t.string "status"
   end
 
+  add_foreign_key "categorizations", "categories"
+  add_foreign_key "categorizations", "menus"
 end

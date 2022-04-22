@@ -16,12 +16,6 @@ RSpec.describe Menu, type: :model do
     expect(menu.errors[:name]).to include("can't be blank")
   end
 
-  it 'is invalid without a description' do
-    menu = FactoryBot.build(:menu, description: nil)
-    menu.valid?
-    expect(menu.errors[:description]).to include("can't be blank")
-  end
-
   it 'is invalid with a non numeric values price' do
     menu = FactoryBot.build(:menu, price: 'Rp.5000')
     menu.valid?

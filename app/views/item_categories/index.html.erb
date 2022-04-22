@@ -7,6 +7,7 @@
     <thead>
         <tr>
             <th scope="col">Nama</th>
+            <th scope="col">Nama</th>
             <th scope="col">Category</th>
 
         </tr>
@@ -16,6 +17,7 @@
     <% @item_categories.each do |item| %>
         <tr>
         <td><%= item.menu_name%></td>
+        <td><%= item.menu_price%></td>
         <td><%= item.category_name%></td>
         <td><%= button_to "Delete", item_category_url(item.id), method: :delete %>
         </tr>

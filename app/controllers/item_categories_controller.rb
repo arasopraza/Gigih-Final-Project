@@ -2,7 +2,7 @@ class ItemCategoriesController < ApplicationController
   skip_before_action :verify_authenticity_token
   
   def index
-    @item_categories = ItemCategory.joins(:menu, :category).select('menus.name as menu_name, categories.name as category_name')
+    @item_categories = ItemCategory.joins(:menu, :category).select('menus.name as menu_name, menus.price as menu_price, categories.name as category_name, item_categories.id')
   end
 
   def new

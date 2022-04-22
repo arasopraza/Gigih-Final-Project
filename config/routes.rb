@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :categories
   resources :item_categories
   resources :customers
+  get 'reports', to: 'orders#report_order', as: :reports
 end
